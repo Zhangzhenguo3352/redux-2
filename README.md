@@ -68,6 +68,85 @@ flex-wrap:wrap    换行
 ```
 ###7
 ```
-material-ui 框架使用
+material-ui 框架使用 注意的事项
+1，最外层的 index.js 添加 
+  import injectTapEventPlugin from 'react-tap-event-plugin';
+  injectTapEventPlugin();
+2，
+  里面最大的组件，Main.js 添加
+    import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
+    class Main extends Component {
+      getChildContext() {
+        return { muiTheme: getMuiTheme() };
+      }
+    }
+
+    Main.childContextTypes = {
+      muiTheme: React.PropTypes.object.isRequired,
+    };
+
+3， StyleRoot 组件是在 radium 里的小组件，利用它
+
+  把 Main 组件要渲染的内容都用 SytleRoot 组件包裹起来，
+  这样组件内联样式中使用的媒体查询语句才能生效，组件变成响应式组件
+
+  import Radium, { StyleRoot } from 'radium';
+
+
+  把最外层<div>换成 <StyleRoot>
+
+    <StyleRoot style={styles.root}>
+        <header style={styles.header}>
+          <div style={styles.logo}>Haoqicat</div>
+        </header>
+        <Courses />
+    </StyleRoot>
+
+  4, 这时候你就要看看 webpack.config.dev.js 里的配置是否包含 
+    加载 css 的插件 react-tap-event-plugin，
+    loaders: [
+      {
+        test: /\.js$/,
+        loaders: ['babel'],
+        include: path.join(__dirname, 'src')
+      },
+      {
+        test: /\.css$/,
+        include: path.join(__dirname, 'src'),
+        loader: 'style-loader!css-loader'
+      }
+    ]
+
 
 ```
+
+###8
+```
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

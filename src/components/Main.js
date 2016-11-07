@@ -1,8 +1,13 @@
 import React,{ Component } from 'react'
-import Radium from 'radium'
+import Radium,{ StyleRoot } from 'radium'
 import Courses from './Courses'
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
  class Main extends Component{
+  getChildContext() {
+    return { muiTheme: getMuiTheme() };
+  }
+
   render(){
     let styles = {
       roots:{
@@ -21,13 +26,29 @@ import Courses from './Courses'
       }
     }
     return(
-      <div style={styles.roots}>
+      <StyleRoot style={styles.roots}>
         <header style={styles.header}>
           <div style={styles.content}>头部</div>
         </header>
         <Courses/>
-      </div>
+      </StyleRoot>
     )
   }
 }
+
+Main.childContextTypes = {
+  muiTheme: React.PropTypes.object.isRequired,
+};
+
 export default Radium(Main)
+
+
+
+
+
+
+
+
+
+
+

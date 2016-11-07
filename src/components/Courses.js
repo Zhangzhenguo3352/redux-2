@@ -1,8 +1,9 @@
 import React ,{Component} from 'react'
 import Radium from 'radium'
 import Date from '../data/data'
+import Course from './Course'
 
-class Courser extends Component{
+class Courses extends Component{
   render(){
     let styles={
       roots:{
@@ -16,11 +17,11 @@ class Courser extends Component{
     }
     return(
       <div style={styles.roots}>
-
-        {Date.map((item,i) => <div><img src={item.image}/>{i}</div>)}
+       
+        {Date.map((item,i) => <Course key={i} course={item}/>)}
 
       </div>
     )
   }
 }
-export default Radium(Courser)
+export default Radium(Courses)
