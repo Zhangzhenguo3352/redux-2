@@ -8,7 +8,13 @@ class Course extends Component{
 		return {
 			root:{
 				margin:'0 2rem 4rem',
-				flexBasis:'100%'
+				flexBasis:'100%',
+				'@media (min-width:600px)':{
+					flexBasis:'calc(50% - 4rem)'
+				}
+			},
+			img:{
+				width:'100%'
 			}
 		}
 	}
@@ -19,7 +25,7 @@ class Course extends Component{
 			<div style = {styles.root}>
 				<Card>
 					<div>
-						<img src={course.image}/>
+						<img src={course.image} style={styles.img}/>
 					</div>
 				</Card>
 			</div>
@@ -28,23 +34,3 @@ class Course extends Component{
 }
 
 export default Radium(Course )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

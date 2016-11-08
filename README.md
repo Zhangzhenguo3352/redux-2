@@ -69,7 +69,7 @@ flex-wrap:wrap    换行
 ###7
 ```
 material-ui 框架使用 注意的事项
-1，最外层的 index.js 添加 
+1，最外层的 index.js 添加
   import injectTapEventPlugin from 'react-tap-event-plugin';
   injectTapEventPlugin();
 2，
@@ -103,7 +103,7 @@ material-ui 框架使用 注意的事项
         <Courses />
     </StyleRoot>
 
-  4, 这时候你就要看看 webpack.config.dev.js 里的配置是否包含 
+  4, 这时候你就要看看 webpack.config.dev.js 里的配置是否包含
     加载 css 的插件 react-tap-event-plugin，
     loaders: [
       {
@@ -121,32 +121,25 @@ material-ui 框架使用 注意的事项
 
 ```
 
-###8
+###8  line-style 函数编写方法
 ```
+    getStyles(){
+      return {
+        root:{
+          margin:'0 2rem 4rem',
+          flexBasis:'100%',
+          '@media (min-width:600px)':{
+            flexBasis:'calc(50% - 4rem)'
+          }
+        },
+        img:{
+          width:'100%'
+        }
+      }
+    }
 
+    let styles = this.getStyles()
+
+
+    <div style={styles.root}></div>
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
